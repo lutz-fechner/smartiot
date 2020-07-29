@@ -1,0 +1,68 @@
+﻿@page "/fanController"
+
+@using FanControl.Data
+@using FanControl.Model
+@inject FanService Svc
+
+<h1>Fan Control (@FanUrl)</h1>
+
+<p>Current Percent:@Svc.getCurrentValueForUrl(this.FanUrl)  </p>
+<p>Last State:@Svc.getLastState(this.FanUrl)  </p>
+
+<button class="btn btn-primary" @onclick="Decrement"> slower</button>
+<button class="btn btn-primary" @onclick="Increment"> faster</button>
+<br /><br />
+<button class="btn btn-primary" @onclick="(e) =>  SetTo(0)">0</button>
+<button class="btn btn-primary" @onclick="(e) =>  SetTo(20)">20</button>
+<button class="btn btn-primary" @onclick="(e) =>  SetTo(40)">40</button>
+<button class="btn btn-primary" @onclick="(e) =>  SetTo(60)">60</button>
+<button class="btn btn-primary" @onclick="(e) =>  SetTo(80)">80</button>
+<button class="btn btn-primary" @onclick="(e) =>  SetTo(100)">100</button>
+
+
+@code {
+
+    [Parameter]
+    public string FanUrl { get; set; } = "";
+
+    [Parameter]
+    public int MotorOffset { get; set; } = 0;
+
+    [Parameter]
+    public int FanFactor { get; set; } = 0;
+
+    [Parameter]
+    public int FanCount { get; set; } = 0;
+
+
+    private Fan fan;
+
+
+    protected override void OnInitialized()
+    {
+        Console.WriteLine("Fan URL is: " + this.FanUrl);
+
+        fan = Svc.GetFanByUrl(this.FanUrl);
+        fan.MotorOneBrake = this.MotorOffset;
+        fan.FanFactor = this.FanFactor;
+        fan.FanCount = this.FanCount;
+    }
+
+
+    public void Increment()
+    {
+        Svc.Increment(this.FanUrl);
+    }
+
+    public void Decrement()
+    {
+        Svc.Decrement(this.FanUrl);
+    }
+
+    public void SetTo(int newSpeed)
+    {
+        Svc.SetToSpeed(this.FanUrl, newSpeed);
+    }
+}
+
+

@@ -1,0 +1,19 @@
+﻿@page "/counter"
+
+@using FanControl.Data
+@inject CounterService Svc
+
+<h1>Counter</h1>
+
+<p>Current count:@Svc.Count</p>
+
+<button class="btn btn-primary" @onclick="Svc.Increment">Click me Service</button>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}
