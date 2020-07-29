@@ -4,21 +4,24 @@
 @using FanControl.Model
 @inject FanService Svc
 
-<h1>Fan Control (@FanUrl)</h1>
+<div class="jumbotron">
+    <h1>Fan Control (@FanUrl)</h1>
 
-<p>Current Percent:@Svc.getCurrentValueForUrl(this.FanUrl)  </p>
-<p>Last State:@Svc.getLastState(this.FanUrl)  </p>
+    <p>Current Percent:@Svc.getCurrentValueForUrl(this.FanUrl)  </p>
+    <p>Last State:@Svc.getLastState(this.FanUrl)  </p>
 
-<button class="btn btn-primary" @onclick="Decrement"> slower</button>
-<button class="btn btn-primary" @onclick="Increment"> faster</button>
-<br /><br />
-<button class="btn btn-primary" @onclick="(e) =>  SetTo(0)">0</button>
-<button class="btn btn-primary" @onclick="(e) =>  SetTo(20)">20</button>
-<button class="btn btn-primary" @onclick="(e) =>  SetTo(40)">40</button>
-<button class="btn btn-primary" @onclick="(e) =>  SetTo(60)">60</button>
-<button class="btn btn-primary" @onclick="(e) =>  SetTo(80)">80</button>
-<button class="btn btn-primary" @onclick="(e) =>  SetTo(100)">100</button>
-
+    <button class="btn btn-primary" @onclick="Decrement"> slower</button>
+    <button class="btn btn-primary" @onclick="Increment"> faster</button>
+    <br /><br />
+    <div class="btn-group" role="group" aria-label="Fan Speeds">
+        <button class="btn btn-primary" @onclick="(e) =>  SetTo(0)">0</button>
+        <button class="btn btn-primary" @onclick="(e) =>  SetTo(20)">20</button>
+        <button class="btn btn-primary" @onclick="(e) =>  SetTo(40)">40</button>
+        <button class="btn btn-primary" @onclick="(e) =>  SetTo(60)">60</button>
+        <button class="btn btn-primary" @onclick="(e) =>  SetTo(80)">80</button>
+        <button class="btn btn-primary" @onclick="(e) =>  SetTo(100)">100</button>
+    </div>
+</div>
 
 @code {
 
