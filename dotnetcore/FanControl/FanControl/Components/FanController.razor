@@ -5,12 +5,30 @@
 @inject FanService Svc
 
 <div class="jumbotron">
-    <h1>Fan Control (@FanUrl)</h1>
+    <h1>
+        Fan Control
+        @if(busy)
+        {
+            <div class="spinner-border text-warning" style="margin-bottom:5px;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        }
+    </h1>
+    
+    <h3>@FanUrl</h3>
+        
+    
 
-    <p>Current Percent:@Svc.getCurrentValueForUrl(this.FanUrl)  </p>
+    
+
+    <div class="progress" style="margin-top:10px;margin-bottom:10px;">
+        <div class="progress-bar" role="progressbar" style="width: @Svc.getCurrentValueForUrl(this.FanUrl)%" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+
     <p>Last State:@Svc.getLastState(this.FanUrl)  </p>
+    <p>Current Percent:@Svc.getCurrentValueForUrl(this.FanUrl)  </p>
 
-    <button class="btn btn-primary" @onclick="Decrement"> slower</button>
+    <button class="btn btn-primary" @onclick="@Decrement"> slower</button>
     <button class="btn btn-primary" @onclick="Increment"> faster</button>
     <br /><br />
     <div class="btn-group" role="group" aria-label="Fan Speeds">
@@ -37,9 +55,14 @@
     [Parameter]
     public int FanCount { get; set; } = 0;
 
+    public bool busy { get; set; } = false;
 
     private Fan fan;
 
+    private void makeBusy()
+    {
+        busy = true;
+    }
 
     protected override void OnInitialized()
     {
@@ -52,19 +75,39 @@
     }
 
 
-    public void Increment()
+    public async Task Increment()
     {
+        busy = true;
+        await Task.Delay(1);  
+
         Svc.Increment(this.FanUrl);
+
+        await Task.Delay(1);  
+        busy = false;
     }
 
-    public void Decrement()
+    public async Task Decrement()
     {
+        busy = true;
+        await Task.Delay(1);  
+        
         Svc.Decrement(this.FanUrl);
+        
+        busy = false;
+        await Task.Delay(1);  
     }
 
-    public void SetTo(int newSpeed)
+    public async Task SetTo(int newSpeed)
     {
+        busy = true;
+        await Task.Delay(1);  
+
         Svc.SetToSpeed(this.FanUrl, newSpeed);
+
+        busy = false;
+        await Task.Delay(1);  
+
+        
     }
 }
 
