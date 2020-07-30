@@ -6,7 +6,7 @@
 
 <div class="jumbotron">
     <h1>
-        Fan Control
+        @FanName
         @if(busy)
         {
             <div class="spinner-border text-warning" style="margin-bottom:5px;" role="status">
@@ -15,7 +15,7 @@
         }
     </h1>
     
-    <h3>@FanUrl</h3>
+    <h4>@FanUrl</h4>
         
     
 
@@ -45,6 +45,10 @@
 
     [Parameter]
     public string FanUrl { get; set; } = "";
+
+     [Parameter]
+    public string FanName { get; set; } = "";
+
 
     [Parameter]
     public int MotorOffset { get; set; } = 0;
