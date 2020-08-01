@@ -4,8 +4,10 @@
 @using FanControl.Model
 @inject FanService Svc
 
-<div class="jumbotron">
-    <h1>
+@if(Compact)
+{
+    <div class="jumbotron">
+        <h1>
         @FanName
         @if(busy)
         {
@@ -13,33 +15,56 @@
                 <span class="sr-only">Loading...</span>
             </div>
         }
-    </h1>
-    
-    <h4>@FanUrl</h4>
+        </h1>
+        <div class="progress" style="margin-top:10px;margin-bottom:10px;">
+            <div class="progress-bar" role="progressbar" style="width: @Svc.getCurrentValueForUrl(this.FanUrl)%" aria-valuemin="0" aria-valuemax="100">@Svc.getCurrentValueForUrl(this.FanUrl)%</div>
+        </div>
+        <div class="btn-group" role="group" aria-label="Fan Speeds">
+                <button class="btn btn-primary" @onclick="(e) =>  SetTo(0)">0</button>
+                <button class="btn btn-primary" @onclick="(e) =>  SetTo(20)">20</button>
+                <button class="btn btn-primary" @onclick="(e) =>  SetTo(40)">40</button>
+                <button class="btn btn-primary" @onclick="(e) =>  SetTo(60)">60</button>
+                <button class="btn btn-primary" @onclick="(e) =>  SetTo(80)">80</button>
+                <button class="btn btn-primary" @onclick="(e) =>  SetTo(100)">100</button>
+        </div>
+    </div>
+}
+else
+{
+    <div class="jumbotron">
+        <h1>
+            @FanName
+            @if(busy)
+            {
+                <div class="spinner-border text-warning" style="margin-bottom:5px;" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            }
+        </h1>
         
-    
+        <h4>@FanUrl</h4>
+            
+        <div class="progress" style="margin-top:10px;margin-bottom:10px;">
+            <div class="progress-bar" role="progressbar" style="width: @Svc.getCurrentValueForUrl(this.FanUrl)%" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
 
-    
+        <p>Last State:@Svc.getLastState(this.FanUrl)  </p>
+        <p>Current Percent:@Svc.getCurrentValueForUrl(this.FanUrl)  </p>
 
-    <div class="progress" style="margin-top:10px;margin-bottom:10px;">
-        <div class="progress-bar" role="progressbar" style="width: @Svc.getCurrentValueForUrl(this.FanUrl)%" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
+        <button class="btn btn-primary" @onclick="@Decrement"> slower</button>
+        <button class="btn btn-primary" @onclick="Increment"> faster</button>
+        <br /><br />
+        <div class="btn-group" role="group" aria-label="Fan Speeds">
+            <button class="btn btn-primary" @onclick="(e) =>  SetTo(0)">0</button>
+            <button class="btn btn-primary" @onclick="(e) =>  SetTo(20)">20</button>
+            <button class="btn btn-primary" @onclick="(e) =>  SetTo(40)">40</button>
+            <button class="btn btn-primary" @onclick="(e) =>  SetTo(60)">60</button>
+            <button class="btn btn-primary" @onclick="(e) =>  SetTo(80)">80</button>
+            <button class="btn btn-primary" @onclick="(e) =>  SetTo(100)">100</button>
+        </div>
+    </div>    
+}
 
-    <p>Last State:@Svc.getLastState(this.FanUrl)  </p>
-    <p>Current Percent:@Svc.getCurrentValueForUrl(this.FanUrl)  </p>
-
-    <button class="btn btn-primary" @onclick="@Decrement"> slower</button>
-    <button class="btn btn-primary" @onclick="Increment"> faster</button>
-    <br /><br />
-    <div class="btn-group" role="group" aria-label="Fan Speeds">
-        <button class="btn btn-primary" @onclick="(e) =>  SetTo(0)">0</button>
-        <button class="btn btn-primary" @onclick="(e) =>  SetTo(20)">20</button>
-        <button class="btn btn-primary" @onclick="(e) =>  SetTo(40)">40</button>
-        <button class="btn btn-primary" @onclick="(e) =>  SetTo(60)">60</button>
-        <button class="btn btn-primary" @onclick="(e) =>  SetTo(80)">80</button>
-        <button class="btn btn-primary" @onclick="(e) =>  SetTo(100)">100</button>
-    </div>
-</div>
 
 @code {
 
@@ -58,6 +83,9 @@
 
     [Parameter]
     public int FanCount { get; set; } = 0;
+
+    [Parameter]
+    public bool Compact { get; set; } = false;
 
     public bool busy { get; set; } = false;
 

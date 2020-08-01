@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\source\\smartiot\\smartiot\\dotnetcore\\FanControl\\FanControl\\FanControl.csproj": {}
+    "/home/pi/source/smartiot/dotnetcore/FanControl/FanControl/FanControl.csproj": {}
   },
   "projects": {
-    "C:\\source\\smartiot\\smartiot\\dotnetcore\\FanControl\\FanControl\\FanControl.csproj": {
+    "/home/pi/source/smartiot/dotnetcore/FanControl/FanControl/FanControl.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\source\\smartiot\\smartiot\\dotnetcore\\FanControl\\FanControl\\FanControl.csproj",
+        "projectUniqueName": "/home/pi/source/smartiot/dotnetcore/FanControl/FanControl/FanControl.csproj",
         "projectName": "FanControl",
-        "projectPath": "C:\\source\\smartiot\\smartiot\\dotnetcore\\FanControl\\FanControl\\FanControl.csproj",
-        "packagesPath": "C:\\Users\\lutzf\\.nuget\\packages\\",
-        "outputPath": "C:\\source\\smartiot\\smartiot\\dotnetcore\\FanControl\\FanControl\\obj\\",
+        "projectPath": "/home/pi/source/smartiot/dotnetcore/FanControl/FanControl/FanControl.csproj",
+        "packagesPath": "/home/pi/.nuget/packages/",
+        "outputPath": "/home/pi/source/smartiot/dotnetcore/FanControl/FanControl/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lutzf\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/pi/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -55,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/pi/dotnet-arm32/sdk/3.1.102/RuntimeIdentifierGraph.json"
         }
       }
     }
