@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SGczxQH7QdVgLG85bOJ8Lp8Pfrz16xdBVxInIjRaVlSE/EeyVI1CcSrDBFYx4KLHYU1qYtfdcUulmeb0BKQbIA==",
+  "dgSpecHash": "R73PHdKCXnyncOA4S2Lh4xMhDkPw/CgKSVlKNZO2IGNP9FzGiL+bhWDhntS+TAS/9nP1zYd7tUWoWPqHEhohxw==",
   "success": true,
-  "projectFilePath": "C:\\source\\smartiot\\smartiot\\dotnetcore\\FanControl\\FanControl\\FanControl.csproj",
+  "projectFilePath": "E:\\source\\smartiot\\dotnetcore\\FanControl\\FanControl\\FanControl.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

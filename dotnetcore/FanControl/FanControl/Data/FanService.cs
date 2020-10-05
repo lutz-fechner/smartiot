@@ -11,6 +11,8 @@ namespace FanControl.Data
     {
         private Dictionary<string, Fan> fans;
 
+        public int executionCounter { get; set; }
+
         public string lastUrl { get; set; }
 
         public FanService()

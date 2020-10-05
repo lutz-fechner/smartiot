@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using FanControl.Data;
+using FanControl.BackgroundProcessing;
 
 namespace FanControl
 {
@@ -31,6 +32,8 @@ namespace FanControl
 
             services.AddSingleton<CounterService, CounterService>();
             services.AddSingleton<FanService, FanService>();
+
+            services.AddHostedService<SolarPollingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
