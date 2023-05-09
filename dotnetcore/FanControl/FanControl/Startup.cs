@@ -28,12 +28,11 @@ namespace FanControl
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
 
-            services.AddSingleton<CounterService, CounterService>();
             services.AddSingleton<FanService, FanService>();
 
-            services.AddHostedService<SolarPollingService>();
+            services.AddSingleton<SolarPollingService>();
+            services.AddHostedService(sp => sp.GetRequiredService<SolarPollingService>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

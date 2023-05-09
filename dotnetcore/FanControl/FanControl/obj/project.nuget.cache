@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "4259iRlN012JHdE0g6Vrd3ybdXlHQ4sb1ya/0QMvLc4VdXr7aD1gPfvSCRRU0smeaAn9w57jxRitSSgjfc8XXw==",
+  "dgSpecHash": "gxCPxiZySJx9gm5IcS81BFWXrMoADvwR4vnnMReef/iSL8kEEPHfP4D/liJazRs2ALOq2ONZP9mT3Lc/gVy++A==",
   "success": true,
-  "projectFilePath": "/home/lutz/smartiot/dotnetcore/FanControl/FanControl/FanControl.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\lutzf\\Desktop\\smartiot\\dotnetcore\\FanControl\\FanControl\\FanControl.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\lutzf\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

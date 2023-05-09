@@ -1,0 +1,115 @@
+﻿@page "/solar"
+
+@using FanControl.BackgroundProcessing
+@using FanControl.Model
+@inject SolarPollingService SolarService
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Inverter</th>
+            <th>Current Output</th>
+            <th>Daily yield</th>
+            <th>Total yield</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var inverter in inverters)
+        {
+            <tr>
+                @if(inverter.BatteryInverter)
+                {
+                    <td>@inverter.InverterName <b>(@inverter.StateOfCharge%)</b></td>
+                }
+                else
+                {
+                    <td>@inverter.InverterName</td>
+                }
+                <td>@inverter.CurrentPower W</td>
+                <td>@inverter.TodayHarvest kWh</td>
+                <td>@inverter.TotalHarvest kWh</td>
+            </tr>
+        }
+        <tr style="font-weight:bold;height:100px">
+            <td colspan="4"></td>
+        </tr>
+        <tr style="font-weight:bold">
+            <td colspan="4">Totals</td>
+        </tr>
+
+        <tr style="font-weight:bold">
+            <td>Total PV</td>
+            <td>@totalPVPower W</td>
+            <td>@(dailyPV.ToString("F2")) kWh</td>
+            <td>@(totalPV.ToString("F2")) kWh</td>
+        </tr>
+        <tr style="font-weight:bold">
+            <td>Battery Total</td>
+            <td>@totalBatteryPower W</td>
+            <td>@(dailyBattery.ToString("F2")) kWh</td>
+            <td>@(totalBattery.ToString("F2")) kWh</td>
+        </tr>
+        <tr style="font-weight:bold">
+            <td>Export Total</td>
+            <td></td>
+            <td></td>
+            <td>@(SolarService.CurrentMeterValues.ExportAmount) kWh</td>
+        </tr>
+        <tr style="font-weight:bold">
+            <td>Import Total</td>
+            <td></td>
+            <td></td>
+            <td>@(SolarService.CurrentMeterValues.ImportAmount) kWh</td>
+        </tr>
+        <tr style="font-weight:bold">
+            <td>Self usage Total</td>
+            <td></td>
+            <td></td>
+            <td>@((int)totalPV - SolarService.CurrentMeterValues.ExportAmount) kWh (@selfUsage.ToString("F2")%)</td>
+        </tr>
+        <tr style="font-weight:bold">
+            <td>Autarky</td>
+            <td></td>
+            <td></td>
+            <td>@autarky.ToString("F2")%</td>
+        </tr>
+    </tbody>
+</table>
+
+@code {
+    private int counterValue;
+    private Inverter[] inverters;
+    private double totalPV;
+    private double totalBattery;
+    private int totalPVPower;
+    private int totalBatteryPower;
+    private double dailyPV;
+    private double dailyBattery;
+    private double selfUsage;
+    private double autarky;
+
+    protected override async Task OnInitializedAsync()
+    {
+        counterValue =  SolarService.CurrentCount();
+        inverters = SolarService.Inverters();
+
+        foreach (Inverter inverter in inverters)
+        {
+            if(inverter.BatteryInverter)
+            {
+                totalBattery += inverter.TotalHarvest;
+                totalBatteryPower += (int)inverter.CurrentPower;
+                dailyBattery += inverter.TodayHarvest;
+            }
+            else
+            {
+                totalPV += inverter.TotalHarvest;
+                totalPVPower += (int)inverter.CurrentPower;
+                dailyPV += inverter.TodayHarvest;
+            }
+        }
+
+        selfUsage = ((totalPV - Convert.ToDouble(SolarService.CurrentMeterValues.ExportAmount)) / totalPV) * 100.0;
+        autarky = (totalPV - SolarService.CurrentMeterValues.ExportAmount) / ((totalPV - SolarService.CurrentMeterValues.ExportAmount) + SolarService.CurrentMeterValues.ImportAmount) * 100;
+    }
+}
