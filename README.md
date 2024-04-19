@@ -1,2 +1,2 @@
 # smartiot
-Smarthome IOT Playground
+Smart Home IOT Playground
