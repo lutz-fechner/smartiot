@@ -7,15 +7,15 @@
 @if(Compact)
 {
     <div class="jumbotron">
-        <h1>
+
         @FanName
         @if(busy)
         {
-            <div class="spinner-border text-warning" style="margin-bottom:5px;" role="status">
+            <div class="spinner-border text-warning" style="margin-bottom:5px;color:black;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
         }
-        </h1>
+
         <div class="progress" style="margin-top:10px;margin-bottom:10px;">
             <div class="progress-bar" role="progressbar" style="width: @Svc.getCurrentValueForUrl(this.FanUrl)%" aria-valuemin="0" aria-valuemax="100">@Svc.getCurrentValueForUrl(this.FanUrl)%</div>
         </div>
@@ -32,15 +32,14 @@
 else
 {
     <div class="jumbotron">
-        <h1>
-            @FanName
-            @if(busy)
-            {
-                <div class="spinner-border text-warning" style="margin-bottom:5px;" role="status">
-                    <span class="sr-only">Loading...</span>
-                </div>
-            }
-        </h1>
+
+        @FanName
+        @if(busy)
+        {
+            <div class="spinner-border text-warning" style="margin-bottom:5px;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        }
         
         <h4>@FanUrl</h4>
             
