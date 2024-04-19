@@ -7,3 +7,6 @@ The ESP8266 obtains it's TCP/IP configuration via DHCP. For the WIFI connection 
 
 ## URL
 You need to call http://<< IP >>/temp to get the tempature back. Temperature is returned as decimal and integer.
+
+## Sensor
+This is the sensor I used: [Buy on Amazon](https://amzn.to/4b11ylo)
