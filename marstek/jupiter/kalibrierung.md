@@ -1,6 +1,6 @@
 # Marstek Jupiter Kalibrierung
 
-Zur ordnungsgemäßen Funktion des Speichers sollte dieser 3 mal hintereinander vollständig geladen und entalden werden. Dies ist norwendig, damit der Speicher seinen oberen und unteren Ladezustand sauber kennen kann. Besonders die untere Grenze ist wichtig, damit der Speicher nicht tief entlädt. Diesen Vorgang sollte man regelmäßig wiederholen.
+Zur ordnungsgemäßen Funktion des Speichers sollte dieser 3 mal hintereinander vollständig geladen und entalden werden. Dies ist norwendig, damit der Speicher seinen oberen und unteren Ladezustand sauber erkennen kann. Besonders die untere Grenze ist wichtig, damit der Speicher nicht tief entlädt. Diesen Vorgang sollte man regelmäßig wiederholen.
 
 1. Vorbereitung  
 Den Speicher vom Netz trennen und auf manuellen Modus schalten.
