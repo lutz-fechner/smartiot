@@ -9,7 +9,7 @@ Den Speicher vom Netz trennen und auf manuellen Modus schalten.
 Bis 100% voll laden lassen. Dabei vom Netz getrennt lassen. Die letzten Prozente können etwas dauern.
 
 3. Entladen  
-Speicher wieder einstecken und durch einstellen eines Zeitfensters wieder entladen.
+Speicher wieder einstecken und durch Einstellen eines Zeitfensters wieder entladen.
 Den Speicher bis er leer ist entladen. Danach wieder vom Netz trennen.
 Am besten Nachts entladen, damit er nicht geladen wird.
 
