@@ -8,5 +8,5 @@ Es liegt eine Überspannung im AC-Netz vor. Spannungen prüfen und Ursache abste
 **0426**  
 Stromkabel prüfen. Neustarten.
 
-**049F**
+**049F**  
 Akku von AC-Netz trennen und neu kalibrieren.
